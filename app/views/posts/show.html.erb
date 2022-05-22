@@ -1,0 +1,15 @@
+<h1><%= @post.subject %></h1>
+<div>
+  <%= simple_format @post.content %>
+</div>
+<h5>Replies</h5>
+<% @post.replies.each do |reply| %>
+  <fieldset>
+    <legend><%= reply.user.email %></legend>
+    <%= simple_format reply.content %>
+  </fieldset>
+<% end %>
+<fieldset>
+  <legend>New reply</legend>
+  <%= render 'posts/replies/form', reply: @reply, post: @post %>
+</fieldset>
